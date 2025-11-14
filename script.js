@@ -3,6 +3,9 @@ let tiles = [];
 for (let i = 1; i <= 15; i++) tiles.push(i.toString());
 tiles.push(""); // the empty tile
 
+document.getElementById("shuffle-btn").addEventListener("click", shuffle);
+shuffle();
+
 function renderPuzzle() {
     puzzleContainer.innerHTML = "";
 
@@ -18,8 +21,6 @@ function renderPuzzle() {
         puzzleContainer.appendChild(div);
     }
 }
-
-shuffle();
 
 // function to confirm whether a specified tile can move to the current empty tile position
 function canMove(index, emptyIndex) {
@@ -62,7 +63,6 @@ function checkWin() {
     if (won) alert("Congratulations! You solved the puzzle!");
 }
 
-document.getElementById("shuffle-btn").addEventListener("click", shuffle);
 // function to shuffle puzzle
 function shuffle() {
     for (let i = 0; i < 200; i++) {
