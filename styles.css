@@ -1,0 +1,33 @@
+body {
+    font-family: system-ui;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#puzzle-container {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 5px;
+    margin: 20px auto;
+}
+
+.tile {
+    background-color: rgb(69, 0, 0);
+    color: white;
+    font-size: 2rem; /* twice the font size of the root element */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.empty {
+    background-color: rgb(237, 182, 191);
+}
+
+.correctPosition {
+    background-color: rgb(255, 141, 41);
+}
