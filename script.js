@@ -3,11 +3,32 @@ let tiles = [];
 for (let i = 1; i <= 15; i++) tiles.push(i.toString());
 tiles.push(""); // the empty tile
 
+const movesDisplay = document.getElementById("moves");
+let moves = 0;
+
+const timeDisplay = document.getElementById("time");
+let time = 0;
+let timerStarted = false;
+let timerInterval = null;
+
 document.getElementById("shuffle-btn").addEventListener("click", shuffle);
 shuffle();
 
+function formatTime(time) {
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    let output = "";
+
+    if (minutes) output += `${minutes} m `;
+    output += `${seconds} s`;
+
+    return output;
+}
+
 function renderPuzzle() {
     puzzleContainer.innerHTML = "";
+    movesDisplay.innerText = moves.toString();
+    timeDisplay.innerText = formatTime(time);
 
     for (let i = 0; i < 16; i++) {
         const div = document.createElement("div");
@@ -40,12 +61,21 @@ function moveTile(index) {
     const emptyIndex = tiles.indexOf("");
 
     if (canMove(index, emptyIndex)) {
+        if (!timerStarted) {
+            timerStarted = true;
+            timerInterval = setInterval(() => {
+                time++;
+                timeDisplay.innerText = formatTime(time);
+            }, 1000);
+        }
+
         // switch indices
         let aux = tiles[index];
         tiles[index] = tiles[emptyIndex];
         tiles[emptyIndex] = aux;
 
         // "reload"
+        moves++;
         renderPuzzle();
         checkWin();
     }
@@ -65,6 +95,11 @@ function checkWin() {
 
 // function to shuffle puzzle
 function shuffle() {
+    timerStarted = false;
+    clearInterval(timerInterval);
+    time = 0;
+    moves = 0;
+
     for (let i = 0; i < 200; i++) {
         const emptyIndex = tiles.indexOf("");
         const possibleMoves = [];
