@@ -1,9 +1,22 @@
+:root {
+    --accentColor: rgb(50, 0, 0);
+}
+
 body {
     font-family: system-ui;
     text-align: center;
     margin-top: 50px;
-    background-color: black;
+    background-color: var(--accentColor);
     color: white;
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 #puzzle-container {
@@ -17,7 +30,8 @@ body {
 }
 
 .tile {
-    background-color: rgb(69, 0, 0);
+    background-color: var(--accentColor);
+    filter: brightness(125%);
     color: white;
     font-size: 2rem; /* twice the font size of the root element */
     display: flex;
@@ -27,9 +41,11 @@ body {
 }
 
 .empty {
-    background-color: rgb(237, 182, 191);
+    background-color: var(--accentColor);
+    filter: brightness(175%);
 }
 
 .correctPosition {
-    background-color: rgb(255, 141, 41);
+    background-color: var(--accentColor);
+    filter: brightness(200%);
 }

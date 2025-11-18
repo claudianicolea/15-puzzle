@@ -1,3 +1,5 @@
+// game variables
+
 const puzzleContainer = document.getElementById("puzzle-container");
 let tiles = [];
 for (let i = 1; i <= 15; i++) tiles.push(i.toString());
@@ -11,8 +13,51 @@ let time = 0;
 let timerStarted = false;
 let timerInterval = null;
 
+// settings variables
+
+let displayMode = "lightMode";
+const displayModes = document.getElementsByName('displayMode');
+displayModes.forEach(d => {
+    d.addEventListener('change', () => {
+        if (d.checked) {
+            console.log(`New display mode selection: ${d.value}`);
+            displayMode = d;
+        }
+    })
+})
+
+const root = document.documentElement; // :root
+const accentColors = document.getElementsByName('accentColor');
+accentColors.forEach(c => {
+    c.addEventListener('change', () => {
+        if (c.checked) {
+            console.log(`New accent color selection: ${c.value}`);
+            root.style.setProperty('--accentColor', convertColor(c.value));
+        }
+    })
+})
+
 document.getElementById("shuffle-btn").addEventListener("click", shuffle);
 shuffle();
+
+function convertColor(colorName) {
+    switch (colorName) {
+        case 'orange':
+            return 'rgb(50, 15, 0)';
+        case 'yellow':
+            return 'rgb(50, 35, 0)';
+        case 'green':
+            return 'rgb(10, 25, 5)';
+        case 'blue':
+            return 'rgb(5, 15, 25)';
+        case 'purple':
+            return 'rgb(20, 5, 25)';
+        case 'pink':
+            return 'rgb(40, 0, 20)';
+        default: // red
+            return 'rgb(50, 0, 0)';
+    }
+}
 
 function formatTime(time) {
     let minutes = Math.floor(time / 60);

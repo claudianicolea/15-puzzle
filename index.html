@@ -7,13 +7,33 @@
         <link rel = "stylesheet" href = "styles.css">
     </head>
     <body>
-        <h1>Nicole's 15 Puzzle Game</h1>
+        <div>
+            <h1>Nicole's 15 Puzzle Game</h1>
+            
+            <p>Moves: <span id = "moves"></span></p>
+            <p>Time: <span id = "time"></span></p>
 
-        <p>Moves: <span id = "moves"></span></p>
-        <p>Time: <span id = "time"></span></p>
-        
-        <div id = "puzzle-container"></div>
-        <button id = "shuffle-btn">Shuffle</button>
+            <div id = "puzzle-container"></div>
+            <button id = "shuffle-btn">Shuffle</button>
+        </div>
+
+        <div>
+            <h1>Settings</h1>
+
+            <div>
+                <h2>Accent color</h2>
+                <form id = "accentColorForm">
+                    <label><input type = "radio" name = "accentColor" value = "red" checked>Red</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "orange">Orange</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "yellow">Yellow</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "green">Green</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "blue">Blue</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "purple">Purple</label><br>
+                    <label><input type = "radio" name = "accentColor" value = "pink">Pink</label><br>
+                </form>
+            </div>
+        </div>
+
         <script src = "script.js"></script>
     </body>
 </html>
