@@ -11,6 +11,14 @@ body {
     font-size: 15px;
 }
 
+.flex-container {
+    display: flex;
+}
+
+.flex-container > div {
+    margin: 20px auto;
+}
+
 h1 {
     font-size: 25px;
 }
@@ -25,27 +33,27 @@ h2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 5px;
+    gap: 15px;
     margin: 20px auto;
 }
 
 .tile {
     background-color: var(--accentColor);
-    filter: brightness(125%);
+    filter: brightness(150%);
     color: white;
     font-size: 2rem; /* twice the font size of the root element */
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .empty {
     background-color: var(--accentColor);
-    filter: brightness(175%);
+    filter: brightness(200%);
 }
 
 .correctPosition {
     background-color: var(--accentColor);
-    filter: brightness(200%);
+    filter: brightness(250%);
 }
